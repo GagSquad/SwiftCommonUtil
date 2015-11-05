@@ -11,10 +11,8 @@ import CommonUtil
 
 class ViewController: UIViewController {
 
-    @IBAction func btnAction(sender: AnyObject) {
-        
+    @IBAction func btnAction(sender: AnyObject) {        
         self.view.backgroundColor = UIColor.redColor()
-        
         let vc: OtherViewController = OtherViewController()
         self.view.addSubview(vc.view)
     }
@@ -32,13 +30,6 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
-
-public extension String {
-    public func a () {
-        print("aaa2")
     }
 }
 
