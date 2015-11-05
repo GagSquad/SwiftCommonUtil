@@ -25,7 +25,8 @@ class ViewController: UIViewController {
         swd.display()
         let a: String = "aa"
         a.a()
-        
+        //
+        var addTest;
         // Do any additional setup after loading the view, typically from a nib.
     }
 
