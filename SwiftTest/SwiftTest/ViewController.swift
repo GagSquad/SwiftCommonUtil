@@ -11,10 +11,8 @@ import CommonUtil
 
 class ViewController: UIViewController {
 
-    @IBAction func btnAction(sender: AnyObject) {
-        
+    @IBAction func btnAction(sender: AnyObject) {        
         self.view.backgroundColor = UIColor.redColor()
-        
         let vc: OtherViewController = OtherViewController()
         self.view.addSubview(vc.view)
     }
@@ -23,22 +21,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let swd = SwiftDemo()
         swd.display()
-        let a: String = "aa"
-        a.a()
-        //
-        var addTest;
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
-
-public extension String {
-    public func a () {
-        print("aaa2")
     }
 }
 

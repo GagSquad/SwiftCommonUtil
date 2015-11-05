@@ -10,18 +10,10 @@ import Foundation
 public class SwiftDemo {
     public init () {
         print("SwiftDemo Init !")
-        let a: String = "aaa"
-        a.a()
     }
     
     public func display () {
         print("display")
     }
     
-}
-
-public extension String {
-    public func a () {
-        print("aaa2")
-    }
 }
