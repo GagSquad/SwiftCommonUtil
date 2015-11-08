@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0E2D6D461BEAE85B00241609 /* CommonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E2D6D451BEAE85B00241609 /* CommonUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0E2D6D771BEAED1400241609 /* SwiftDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D6D761BEAED1400241609 /* SwiftDemo.swift */; };
+		0ECB68FD1BEF0142005EC01A /* SystemUitil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECB68FC1BEF0142005EC01A /* SystemUitil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E2D6D421BEAE85B00241609 /* CommonUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E2D6D451BEAE85B00241609 /* CommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
 		0E2D6D471BEAE85B00241609 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E2D6D761BEAED1400241609 /* SwiftDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDemo.swift; sourceTree = "<group>"; };
+		0ECB68FC1BEF0142005EC01A /* SystemUitil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemUitil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +50,7 @@
 			children = (
 				0E2D6D451BEAE85B00241609 /* CommonUtil.h */,
 				0E2D6D471BEAE85B00241609 /* Info.plist */,
-				0E2D6D761BEAED1400241609 /* SwiftDemo.swift */,
+				0ECB68FC1BEF0142005EC01A /* SystemUitil.swift */,
 			);
 			path = CommonUtil;
 			sourceTree = "<group>";
@@ -133,7 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E2D6D771BEAED1400241609 /* SwiftDemo.swift in Sources */,
+				0ECB68FD1BEF0142005EC01A /* SystemUitil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
