@@ -6,11 +6,13 @@
 //  Copyright © 2015年 lijunjie. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import AVFoundation
 import AssetsLibrary
+import ReachabilitySwift
+
 public class SystemUtils {
+    
     /**
      获取App的版本号 Float 行
      
@@ -20,6 +22,7 @@ public class SystemUtils {
         let infoDict = NSBundle.mainBundle().infoDictionary
         return Float(infoDict!["CFBundleShortVersionString"] as! String)!
     }
+    
     
     public static func appStringVersion() -> String {
         let infoDict = NSBundle.mainBundle().infoDictionary
@@ -64,9 +67,9 @@ public class SystemUtils {
         return UIScreen.mainScreen().scale
     }
     
-//    public static func iPadDevice() -> Bool {
-//        return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad)
-//    }
+    public static func iPadDevice() -> Bool {
+        return (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad)
+    }
     
     public static func iPhone4Device() -> Bool {
         return CGSizeEqualToSize(CGSizeMake(320, 480), self.deviceScreenSize())
@@ -172,18 +175,14 @@ public class SystemUtils {
         return UIApplication.sharedApplication().canOpenURL(NSURL(fileURLWithPath:"tel://"))
     }
     
-//    
-//    + (BOOL)networkAvailable
-//    {
-//    NetworkStatus status =[[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
-//    if (status == NotReachable) {
-//    return NO;
-//    }else
-//    {
-//    return YES;
-//    }
-//    }
-//    
+    public static func networkAvailable() -> Bool {
+        let status:Reachability.NetworkStatus = try! Reachability.reachabilityForInternetConnection().currentReachabilityStatus
+        if status == Reachability.NetworkStatus.NotReachable {
+            return false
+        } else {
+            return true
+        }
+    }
     
     public static func isAppCameraAccessAuthorized() -> Bool {
         if !self.isSystemVersionOver(7.0) {

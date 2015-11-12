@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0E2D6D461BEAE85B00241609 /* CommonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E2D6D451BEAE85B00241609 /* CommonUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E6F5B3C1BF48DC3005B7FAE /* KeychanUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F5B3B1BF48DC3005B7FAE /* KeychanUtil.swift */; };
+		0E6F5B491BF4B0B4005B7FAE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6F5B481BF4B0B4005B7FAE /* AVFoundation.framework */; };
+		0E6F5B4B1BF4B0CF005B7FAE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6F5B4A1BF4B0CF005B7FAE /* AssetsLibrary.framework */; };
+		0E751BBD1BF035F10039BE7C /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E751BBC1BF035F10039BE7C /* DateUtils.swift */; };
 		0ECB68FD1BEF0142005EC01A /* SystemUitil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECB68FC1BEF0142005EC01A /* SystemUitil.swift */; };
 /* End PBXBuildFile section */
 
@@ -15,6 +19,10 @@
 		0E2D6D421BEAE85B00241609 /* CommonUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E2D6D451BEAE85B00241609 /* CommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
 		0E2D6D471BEAE85B00241609 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E6F5B3B1BF48DC3005B7FAE /* KeychanUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychanUtil.swift; sourceTree = "<group>"; };
+		0E6F5B481BF4B0B4005B7FAE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0E6F5B4A1BF4B0CF005B7FAE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		0E751BBC1BF035F10039BE7C /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		0ECB68FC1BEF0142005EC01A /* SystemUitil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemUitil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -23,6 +31,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E6F5B4B1BF4B0CF005B7FAE /* AssetsLibrary.framework in Frameworks */,
+				0E6F5B491BF4B0B4005B7FAE /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -34,6 +44,7 @@
 			children = (
 				0E2D6D441BEAE85B00241609 /* CommonUtil */,
 				0E2D6D431BEAE85B00241609 /* Products */,
+				0E6F5B471BF4B099005B7FAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,8 +62,19 @@
 				0E2D6D451BEAE85B00241609 /* CommonUtil.h */,
 				0E2D6D471BEAE85B00241609 /* Info.plist */,
 				0ECB68FC1BEF0142005EC01A /* SystemUitil.swift */,
+				0E751BBC1BF035F10039BE7C /* DateUtils.swift */,
+				0E6F5B3B1BF48DC3005B7FAE /* KeychanUtil.swift */,
 			);
 			path = CommonUtil;
+			sourceTree = "<group>";
+		};
+		0E6F5B471BF4B099005B7FAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E6F5B4A1BF4B0CF005B7FAE /* AssetsLibrary.framework */,
+				0E6F5B481BF4B0B4005B7FAE /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +156,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0ECB68FD1BEF0142005EC01A /* SystemUitil.swift in Sources */,
+				0E751BBD1BF035F10039BE7C /* DateUtils.swift in Sources */,
+				0E6F5B3C1BF48DC3005B7FAE /* KeychanUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

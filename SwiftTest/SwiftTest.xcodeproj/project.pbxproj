@@ -14,6 +14,8 @@
 		0E2D6D311BEAE78600241609 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E2D6D2F1BEAE78600241609 /* LaunchScreen.storyboard */; };
 		0E2D6D971BEAFBB200241609 /* CommonUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2D6D961BEAFBB200241609 /* CommonUtil.framework */; };
 		0E2D6D9E1BEB236400241609 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D6D9D1BEB236400241609 /* OtherViewController.swift */; };
+		0E6F5B421BF4B033005B7FAE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6F5B411BF4B033005B7FAE /* Security.framework */; };
+		0E6F5B441BF4B066005B7FAE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6F5B431BF4B066005B7FAE /* AVFoundation.framework */; };
 		11D98A6CD1370C69A4F2AAE2 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFCAA3EB3F77A7BEDA592BD /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,8 @@
 		0E2D6D981BEB025600241609 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		0E2D6D9C1BEB1FFD00241609 /* SwiftTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftTest-Prefix.pch"; sourceTree = "<group>"; };
 		0E2D6D9D1BEB236400241609 /* OtherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
+		0E6F5B411BF4B033005B7FAE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0E6F5B431BF4B066005B7FAE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		786958DF811E556E3AFA3B86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D682A996099F2A1E97DFCFD5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EAFCAA3EB3F77A7BEDA592BD /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E6F5B441BF4B066005B7FAE /* AVFoundation.framework in Frameworks */,
+				0E6F5B421BF4B033005B7FAE /* Security.framework in Frameworks */,
 				0E2D6D971BEAFBB200241609 /* CommonUtil.framework in Frameworks */,
 				11D98A6CD1370C69A4F2AAE2 /* Pods.framework in Frameworks */,
 			);
@@ -97,6 +103,8 @@
 		0E2D6D7C1BEAEDCE00241609 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E6F5B431BF4B066005B7FAE /* AVFoundation.framework */,
+				0E6F5B411BF4B033005B7FAE /* Security.framework */,
 				0E2D6D961BEAFBB200241609 /* CommonUtil.framework */,
 				EAFCAA3EB3F77A7BEDA592BD /* Pods.framework */,
 			);

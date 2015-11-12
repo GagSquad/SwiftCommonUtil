@@ -1,10 +1,22 @@
 PODS:
+  - ReachabilitySwift (2.1)
   - SnapKit (0.16.0)
 
 DEPENDENCIES:
+  - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift`)
   - SnapKit (~> 0.16.0)
 
+EXTERNAL SOURCES:
+  ReachabilitySwift:
+    :git: https://github.com/ashleymills/Reachability.swift
+
+CHECKOUT OPTIONS:
+  ReachabilitySwift:
+    :commit: 79db5bad2de77c5c5cb4718e1c793bc461f7b3e2
+    :git: https://github.com/ashleymills/Reachability.swift
+
 SPEC CHECKSUMS:
+  ReachabilitySwift: 6a9167003197e618a4430ee43d79918fae1fcc8c
   SnapKit: ddac6b339d571f9d80dbb733585b172ee9eed3cb
 
 COCOAPODS: 0.39.0
