@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E2D6D461BEAE85B00241609 /* CommonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E2D6D451BEAE85B00241609 /* CommonUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E4153281BF4C40F00998354 /* DeviceInfoUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4153271BF4C40F00998354 /* DeviceInfoUtil.swift */; };
 		0E6F5B3C1BF48DC3005B7FAE /* KeychanUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F5B3B1BF48DC3005B7FAE /* KeychanUtil.swift */; };
 		0E6F5B491BF4B0B4005B7FAE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6F5B481BF4B0B4005B7FAE /* AVFoundation.framework */; };
 		0E6F5B4B1BF4B0CF005B7FAE /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6F5B4A1BF4B0CF005B7FAE /* AssetsLibrary.framework */; };
@@ -19,6 +20,7 @@
 		0E2D6D421BEAE85B00241609 /* CommonUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E2D6D451BEAE85B00241609 /* CommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
 		0E2D6D471BEAE85B00241609 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E4153271BF4C40F00998354 /* DeviceInfoUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfoUtil.swift; sourceTree = "<group>"; };
 		0E6F5B3B1BF48DC3005B7FAE /* KeychanUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychanUtil.swift; sourceTree = "<group>"; };
 		0E6F5B481BF4B0B4005B7FAE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0E6F5B4A1BF4B0CF005B7FAE /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -59,6 +61,7 @@
 		0E2D6D441BEAE85B00241609 /* CommonUtil */ = {
 			isa = PBXGroup;
 			children = (
+				0E4153271BF4C40F00998354 /* DeviceInfoUtil.swift */,
 				0E2D6D451BEAE85B00241609 /* CommonUtil.h */,
 				0E2D6D471BEAE85B00241609 /* Info.plist */,
 				0ECB68FC1BEF0142005EC01A /* SystemUitil.swift */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0ECB68FD1BEF0142005EC01A /* SystemUitil.swift in Sources */,
+				0E4153281BF4C40F00998354 /* DeviceInfoUtil.swift in Sources */,
 				0E751BBD1BF035F10039BE7C /* DateUtils.swift in Sources */,
 				0E6F5B3C1BF48DC3005B7FAE /* KeychanUtil.swift in Sources */,
 			);

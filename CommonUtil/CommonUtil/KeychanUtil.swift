@@ -30,9 +30,9 @@ public class KeychanUtil
     
     public func getBaseKeychainQueryWithAccount(account: String, service: String, accessGroup: String) -> [NSString : AnyObject] {
         var res = [NSString : AnyObject]();
-        res[kSecClass as String] = kSecClassGenericPassword as String;
-        res[kSecAttrAccount as String] = account;
-        res[kSecAttrService as String] = service;
+        res[kSecClass] = kSecClassGenericPassword;
+        res[kSecAttrAccount] = account;
+        res[kSecAttrService] = service;
         
         if !accessGroup.isEmpty {
             #if TARGET_IPHONE_SIMULATOR
@@ -43,31 +43,31 @@ public class KeychanUtil
                 //
                 // 如果SecItem包含accessGroup,当SecItemAdd and SecItemUpdate时，将返回-25243 (errSecNoAccessForItem)
             #else
-                res[kSecAttrAccessGroup as String] = accessGroup;
+                res[kSecAttrAccessGroup] = accessGroup;
             #endif
         }
         return res;
     }
     
-    public func getDataWithAccount(account: String, service: String, accessGroup: String) throws -> NSData {
+    public func getDataWithAccount(account: String, service: String, accessGroup: String) -> NSData! {
         var res: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup);
-        res[kSecMatchCaseInsensitive as String] = kCFBooleanTrue;
-        res[kSecMatchLimit as String] = kSecMatchLimitOne;
-        res[kSecReturnData as String] = kCFBooleanTrue;
-        var queryErr: OSStatus   = noErr;
-        var udidValue: NSData;
+        res[kSecMatchCaseInsensitive] = kCFBooleanTrue;
+        res[kSecMatchLimit] = kSecMatchLimitOne;
+        res[kSecReturnData] = kCFBooleanTrue;
+        var queryErr: OSStatus = noErr;
+        var udidValue: NSData?;
         var inTypeRef : AnyObject?
         
         queryErr = SecItemCopyMatching(res, &inTypeRef);
-        udidValue = inTypeRef as! NSData;
+        udidValue = inTypeRef as? NSData;
         if (queryErr != errSecSuccess) {
             print("KeyChain Item query Error!!! Error code:%ld", queryErr);
-            throw CommonUtilError.KeychanGetError;
+//            throw CommonUtilError.KeychanGetError;
         }
         return udidValue;
     }
     
-    public func saveData(data: NSData, account: String, service:String, accessGroup: String) throws {
+    public func saveData(data: NSData, account: String, service:String, accessGroup: String) {
         let query : [NSString : AnyObject] = [
             kSecAttrLabel:"",
             kSecValueData:data,
@@ -76,7 +76,7 @@ public class KeychanUtil
         writeErr = SecItemAdd(query, nil);
         if writeErr != errSecSuccess {
             print("Add KeyChain Item Error!!! Error Code:%ld", writeErr);
-            throw CommonUtilError.KeychanSaveError;
+//            throw CommonUtilError.KeychanSaveError;
         }
     }
     
@@ -91,34 +91,32 @@ public class KeychanUtil
         }
     }
     
-//    public func updateData(data: NSData, account:String, service:String, accessGroup:String) throws {
-//        var dictForQuery: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup);
-//        
-//        dictForQuery[kSecMatchCaseInsensitive] = kCFBooleanTrue;
-//        dictForQuery[kSecMatchLimit] = kSecMatchLimitOne;
-//        dictForQuery[kSecReturnData] = kCFBooleanTrue;
-//        dictForQuery[kSecReturnAttributes] = kCFBooleanTrue;
-//        
-//        var queryErr: OSStatus = noErr;
-//
-//        var queryResultRef: AnyObject?;
-//        
-//        queryErr = SecItemCopyMatching(dictForQuery, &queryResultRef);
-//        
-//        if queryResultRef != nil {
-//            
-//            var dictForUpdate: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup)
-//            dictForUpdate[kSecValueData] = data;
-//            var updateErr: OSStatus = noErr;
-//            
-//            // First we need the attributes from the Keychain.
-//            updateErr = SecItemUpdate(dictForQuery, dictForUpdate);
-//            if (updateErr != errSecSuccess) {
-//                print("Update KeyChain Item Error!!! Error Code:%ld", updateErr);
-//                throw CommonUtilError.KeychanUpdateError;
-//            }
-//        }
-//    }
+    public func updateData(data: NSData, account:String, service:String, accessGroup:String) throws {
+        var dictForQuery: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup);
+        
+        dictForQuery[kSecMatchCaseInsensitive] = kCFBooleanTrue;
+        dictForQuery[kSecMatchLimit] = kSecMatchLimitOne;
+        dictForQuery[kSecReturnData] = kCFBooleanTrue;
+        dictForQuery[kSecReturnAttributes] = kCFBooleanTrue;
+        
+        var queryResultRef: AnyObject?;
+        
+        SecItemCopyMatching(dictForQuery, &queryResultRef);
+        
+        if queryResultRef != nil {
+            
+            var dictForUpdate: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup)
+            dictForUpdate[kSecValueData] = data;
+            var updateErr: OSStatus = noErr;
+            
+            // First we need the attributes from the Keychain.
+            updateErr = SecItemUpdate(dictForQuery, dictForUpdate);
+            if (updateErr != errSecSuccess) {
+                print("Update KeyChain Item Error!!! Error Code:%ld", updateErr);
+                throw CommonUtilError.KeychanUpdateError;
+            }
+        }
+    }
 }
 
 public let SharedKeychanUtil: KeychanUtil = KeychanUtil.sharedInstance;
