@@ -20,9 +20,13 @@ public class DeviceInfoUtil {
     
     public let kCUDefaultKeyChainAccessGroup = "WEPZ293VNV.com.wanmei";
     
+    public init () {
+        
+    }
+    
     public func getUDIDWithKeyChainUDIDAccessGroup(accessGroup: String) -> String {
         if accessGroup.isEmpty {
-//            throw DeviceInfoError.DeviceInfoKeychanError;
+            //            throw DeviceInfoError.DeviceInfoKeychanError;
         }
         
         let udidValue: NSData! = SharedKeychanUtil.getDataWithAccount(kCUCFKeychainUDIDAccount, service: kCUCFKeychainUDIDItemIdentifier, accessGroup: accessGroup);

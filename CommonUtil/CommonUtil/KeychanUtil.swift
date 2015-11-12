@@ -62,7 +62,7 @@ public class KeychanUtil
         udidValue = inTypeRef as? NSData;
         if (queryErr != errSecSuccess) {
             print("KeyChain Item query Error!!! Error code:%ld", queryErr);
-//            throw CommonUtilError.KeychanGetError;
+            //            throw CommonUtilError.KeychanGetError;
         }
         return udidValue;
     }
@@ -76,7 +76,7 @@ public class KeychanUtil
         writeErr = SecItemAdd(query, nil);
         if writeErr != errSecSuccess {
             print("Add KeyChain Item Error!!! Error Code:%ld", writeErr);
-//            throw CommonUtilError.KeychanSaveError;
+            //            throw CommonUtilError.KeychanSaveError;
         }
     }
     
@@ -85,7 +85,7 @@ public class KeychanUtil
         var deleteErr: OSStatus = noErr;
         
         deleteErr = SecItemDelete(dictForDelete);
-
+        
         if(deleteErr != errSecSuccess){
             throw CommonUtilError.KeychanDeleteError;
         }
