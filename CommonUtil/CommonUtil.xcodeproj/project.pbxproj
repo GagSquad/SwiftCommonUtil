@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E4153551BF4C54B00998354 /* CommonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E4153541BF4C54B00998354 /* CommonUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0E4153621BF4C5D000998354 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E41535E1BF4C5D000998354 /* DateUtils.swift */; };
+		0E4153621BF4C5D000998354 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E41535E1BF4C5D000998354 /* DateUtil.swift */; };
 		0E4153631BF4C5D000998354 /* DeviceInfoUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E41535F1BF4C5D000998354 /* DeviceInfoUtil.swift */; };
 		0E4153641BF4C5D000998354 /* KeychainUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4153601BF4C5D000998354 /* KeychainUtil.swift */; };
 		0E4153651BF4C5D000998354 /* SystemUitil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4153611BF4C5D000998354 /* SystemUitil.swift */; };
@@ -18,7 +18,7 @@
 		0E4153511BF4C54B00998354 /* CommonUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E4153541BF4C54B00998354 /* CommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
 		0E4153561BF4C54B00998354 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E41535E1BF4C5D000998354 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		0E41535E1BF4C5D000998354 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		0E41535F1BF4C5D000998354 /* DeviceInfoUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfoUtil.swift; sourceTree = "<group>"; };
 		0E4153601BF4C5D000998354 /* KeychainUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainUtil.swift; sourceTree = "<group>"; };
 		0E4153611BF4C5D000998354 /* SystemUitil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemUitil.swift; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		0E4153531BF4C54B00998354 /* CommonUtil */ = {
 			isa = PBXGroup;
 			children = (
-				0E41535E1BF4C5D000998354 /* DateUtils.swift */,
+				0E41535E1BF4C5D000998354 /* DateUtil.swift */,
 				0E41535F1BF4C5D000998354 /* DeviceInfoUtil.swift */,
 				0E4153601BF4C5D000998354 /* KeychainUtil.swift */,
 				0E4153611BF4C5D000998354 /* SystemUitil.swift */,
@@ -143,7 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E4153651BF4C5D000998354 /* SystemUitil.swift in Sources */,
-				0E4153621BF4C5D000998354 /* DateUtils.swift in Sources */,
+				0E4153621BF4C5D000998354 /* DateUtil.swift in Sources */,
 				0E4153631BF4C5D000998354 /* DeviceInfoUtil.swift in Sources */,
 				0E4153641BF4C5D000998354 /* KeychainUtil.swift in Sources */,
 			);
