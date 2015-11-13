@@ -99,19 +99,19 @@ public class SystemUtils {
         return NSNotificationCenter.defaultCenter()
     }
     
-    public static func postNoti(notiName:String) {
+    public static func postNoti(notiName: String) {
         self.postNoti(notiName, withObject: nil)
     }
     
-    public static func postNoti(notiName:String, withObject:String?) {
+    public static func postNoti(notiName: String, withObject: String?) {
         self.postNoti(notiName, withObject: withObject, infoDict: nil)
     }
     
-    public static func postNoti(notiName:String, withObject:String?, infoDict:Dictionary<NSObject , AnyObject>?) {
+    public static func postNoti(notiName: String, withObject: String?, infoDict: Dictionary<NSObject , AnyObject>?) {
         self.defaultCenter().postNotificationName(notiName, object: withObject, userInfo: infoDict)
     }
     
-    public static func mainBundlePath(fileName:String) -> String? {
+    public static func mainBundlePath(fileName: String) -> String? {
         let fileArray:Array = fileName.componentsSeparatedByString(".")
         if fileArray.count < 2 {
             return nil
@@ -119,7 +119,7 @@ public class SystemUtils {
         return NSBundle.mainBundle().pathForResource(fileArray[0], ofType: fileArray[1])
     }
     
-    public static func bundle(bundle:String, file:String) -> String? {
+    public static func bundle(bundle: String, file: String) -> String? {
         let s:NSString = bundle
         return s.stringByAppendingPathComponent(file)
     }
@@ -188,7 +188,6 @@ public class SystemUtils {
         if !self.isSystemVersionOver(7.0) {
             return true
         }
-        
         let mediaType: String = AVMediaTypeVideo;
         
         let authStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatusForMediaType(mediaType)
@@ -226,5 +225,4 @@ public class SystemUtils {
         }
         return result
     }
-    
 }
