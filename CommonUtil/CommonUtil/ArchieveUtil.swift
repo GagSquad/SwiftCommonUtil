@@ -9,13 +9,13 @@
 import Foundation
 
 public class ArchieveUtil {
-    public static func share() -> CacheUtil {
+    class func share() -> ArchieveUtil {
         struct Static {
             static var onceToken: dispatch_once_t = 0
-            static var instance: CacheUtil? = nil
+            static var instance: ArchieveUtil? = nil
         }
         dispatch_once(&Static.onceToken) {
-            Static.instance = CacheUtil()
+            Static.instance = ArchieveUtil()
         }
         return Static.instance!
     }
@@ -29,3 +29,5 @@ public class ArchieveUtil {
         return NSKeyedUnarchiver.unarchiveObjectWithFile(filePath);
     }
 }
+
+public let SharedArchieveUtil: ArchieveUtil = ArchieveUtil.share();

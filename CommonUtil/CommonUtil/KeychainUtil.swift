@@ -16,7 +16,8 @@ public enum CommonUtilError: ErrorType {
 }
 
 public class KeychainUtil {
-    class var sharedInstance: KeychainUtil {
+    
+    class func share() -> KeychainUtil {
         struct Static {
             static var onceToken: dispatch_once_t = 0
             static var instance: KeychainUtil? = nil
@@ -108,4 +109,4 @@ public class KeychainUtil {
     }
 }
 
-public let SharedKeychanUtil: KeychainUtil = KeychainUtil.sharedInstance;
+public let SharedKeychanUtil: KeychainUtil = KeychainUtil.share();

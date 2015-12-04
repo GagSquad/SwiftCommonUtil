@@ -9,7 +9,7 @@
 import Foundation
 
 public class QuickUIUtil {
-    class var sharedInstance: QuickUIUtil {
+    class func share() -> QuickUIUtil {
         struct Static {
             static var onceToken: dispatch_once_t = 0
             static var instance: QuickUIUtil? = nil
@@ -19,6 +19,18 @@ public class QuickUIUtil {
         }
         return Static.instance!
     }
+    
+//    class var shared: QuickUIUtil {
+//        struct Static {
+//            static var onceToken: dispatch_once_t = 0
+//            static var instance: QuickUIUtil? = nil
+//        }
+//        dispatch_once(&Static.onceToken) {
+//            Static.instance = QuickUIUtil()
+//        }
+//        return Static.instance!
+//    }
+    
     
 //    + (UIColor *)colorFromRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue
 //    {
@@ -1440,4 +1452,4 @@ public class QuickUIUtil {
     
 }
 
-public let SharedQuickUIUtil: QuickUIUtil = QuickUIUtil.sharedInstance;
+public let SharedQuickUIUtil: QuickUIUtil = QuickUIUtil.share();

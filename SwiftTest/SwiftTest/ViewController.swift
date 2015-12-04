@@ -13,8 +13,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let di: DeviceInfoUtil = DeviceInfoUtil();
-        print(try! di.getUDIDWithKeyChainUDIDAccessGroup(di.kCUDefaultKeychainAccessGroup));
+        
+        print(try! SharedDeviceInfoUtil.getUDIDWithKeyChainUDIDAccessGroup(SharedDeviceInfoUtil.kCUDefaultKeychainAccessGroup));
         // Do any additional setup after loading the view, typically from a nib.
     }
 

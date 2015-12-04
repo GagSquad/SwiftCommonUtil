@@ -10,7 +10,7 @@ import Foundation
 
 public class StandDefaultUtil {
     
-    public static func share() -> StandDefaultUtil {
+    class func share() -> StandDefaultUtil {
         struct Static {
             static var onceToken: dispatch_once_t = 0
             static var instance: StandDefaultUtil? = nil
@@ -42,3 +42,5 @@ public class StandDefaultUtil {
     }
     
 }
+
+public let SharedStandDefaultUtil: StandDefaultUtil = StandDefaultUtil.share();

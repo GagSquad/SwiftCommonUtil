@@ -11,107 +11,118 @@ import AVFoundation
 import AssetsLibrary
 import ReachabilitySwift
 
-public class SystemUtils {
+public class SystemUtil {
+    
+    class func share() -> SystemUtil {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: SystemUtil? = nil
+        }
+        dispatch_once(&Static.onceToken) {
+            Static.instance = SystemUtil()
+        }
+        return Static.instance!
+    }
     
     /**
      获取App的版本号 Float 行
      
      - returns: 返回Float型的   App版本号
      */
-    public static func appFloatVersion() -> Float {
+    public func appFloatVersion() -> Float {
         let infoDict = NSBundle.mainBundle().infoDictionary
         return Float(infoDict!["CFBundleShortVersionString"] as! String)!
     }
     
     
-    public static func appStringVersion() -> String {
+    public func appStringVersion() -> String {
         let infoDict = NSBundle.mainBundle().infoDictionary
         return  infoDict!["CFBundleShortVersionString"] as! String
     }
     
-    public static func appBundleStringVersion() -> String {
+    public func appBundleStringVersion() -> String {
         let infoDict = NSBundle.mainBundle().infoDictionary
         return infoDict!["CFBundleVersion"] as! String;
     }
     
-    public static func appBundleIntVersion() -> Int {
+    public func appBundleIntVersion() -> Int {
         let infoDict = NSBundle.mainBundle().infoDictionary
         return Int(infoDict!["CFBundleVersion"] as! String)!
     }
     
-    public static func appBundleIdentifier() -> String {
+    public func appBundleIdentifier() -> String {
         return NSBundle.mainBundle().bundleIdentifier!
     }
     
-    public static func isSystemVersionOver(versionValue:Float) -> Bool {
+    public func isSystemVersionOver(versionValue:Float) -> Bool {
         return self.currentSystemFloatVersion() >= versionValue
     }
     
-    public static func screenBounds() -> CGRect {
+    public func screenBounds() -> CGRect {
         return UIScreen.mainScreen().bounds
     }
     
-    public static func currentSystemFloatVersion() -> Float {
+    public func currentSystemFloatVersion() -> Float {
         return Float(UIDevice.currentDevice().systemVersion)!
     }
     
-    public static func currentSystemStringVersion() -> String {
+    public func currentSystemStringVersion() -> String {
         return UIDevice.currentDevice().systemVersion
     }
     
-    public static func currentSystemName() -> String {
+    public func currentSystemName() -> String {
         return UIDevice.currentDevice().systemName
     }
     
-    public static func currentScreenScale() -> CGFloat {
+    public func currentScreenScale() -> CGFloat {
         return UIScreen.mainScreen().scale
     }
     
-    public static func iPadDevice() -> Bool {
+    public func iPadDevice() -> Bool {
         return (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad)
     }
     
-    public static func iPhone4Device() -> Bool {
+    public func iPhone4Device() -> Bool {
         return CGSizeEqualToSize(CGSizeMake(320, 480), self.deviceScreenSize())
     }
     
-    public static func iPhone5Device() -> Bool {
+    public func iPhone5Device() -> Bool {
         return CGSizeEqualToSize(CGSizeMake(320, 568), self.deviceScreenSize())
     }
     
-    public static func iPhone6Device() -> Bool {
+    public func iPhone6Device() -> Bool {
         return CGSizeEqualToSize(CGSizeMake(375, 667), self.deviceScreenSize())
     }
     
-    public static func iPhone6PlusDevice() -> Bool {
+    public func iPhone6PlusDevice() -> Bool {
         return CGSizeEqualToSize(CGSizeMake(414, 736), self.deviceScreenSize())
     }
     
-    public static func deviceScreenSize() -> CGSize {
+    public func deviceScreenSize() -> CGSize {
         return UIScreen.mainScreen().bounds.size
     }
     
-    public static func naivationBarHeight() -> CGFloat {
+    public func naivationBarHeight() -> CGFloat {
         return CGFloat(44.0)
     }
     
-    public static func defaultCenter() -> NSNotificationCenter {
+    public func defaultCenter() -> NSNotificationCenter {
         return NSNotificationCenter.defaultCenter()
     }
     
-    public static func postNoti(notiName: String) {
+    public func postNoti(notiName: String) {
         self.postNoti(notiName, withObject: nil)
     }
     
-    public static func postNoti(notiName: String, withObject: String?) {
+    public func postNoti(notiName: String, withObject: String?) {
         self.postNoti(notiName, withObject: withObject, infoDict: nil)
     }
     
-    public static func postNoti(notiName: String, withObject: String?, infoDict: Dictionary<NSObject , AnyObject>?) {
+    public func postNoti(notiName: String, withObject: String?, infoDict: Dictionary<NSObject , AnyObject>?) {
         self.defaultCenter().postNotificationName(notiName, object: withObject, userInfo: infoDict)
     }
     
-    public static func mainBundlePath(fileName: String) -> String? {
+    public func mainBundlePath(fileName: String) -> String? {
         let fileArray:Array = fileName.componentsSeparatedByString(".")
         if fileArray.count < 2 {
             return nil
@@ -119,12 +130,12 @@ public class SystemUtils {
         return NSBundle.mainBundle().pathForResource(fileArray[0], ofType: fileArray[1])
     }
     
-    public static func bundle(bundle: String, file: String) -> String? {
+    public func bundle(bundle: String, file: String) -> String? {
         let s:NSString = bundle
         return s.stringByAppendingPathComponent(file)
     }
     
-    public static func showNetworkIndicatorActivity(state: Bool) {
+    public func showNetworkIndicatorActivity(state: Bool) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = state
     }
 //    
@@ -155,27 +166,27 @@ public class SystemUtils {
 //    }
 //   
     
-    public static func cameraAvailable() -> Bool {
+    public func cameraAvailable() -> Bool {
         return UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
     
-    public static func frontCameraAvailable() -> Bool {
+    public func frontCameraAvailable() -> Bool {
         return UIImagePickerController.isCameraDeviceAvailable(UIImagePickerControllerCameraDevice.Front)
     }
     
-    public static func cameraFlashAvailable() -> Bool {
+    public func cameraFlashAvailable() -> Bool {
         return UIImagePickerController.isFlashAvailableForCameraDevice(UIImagePickerControllerCameraDevice.Rear)
     }
     
-    public static func canSendSMS() -> Bool {
+    public func canSendSMS() -> Bool {
         return UIApplication.sharedApplication().canOpenURL(NSURL(fileURLWithPath:"sms://"))
     }
     
-    public static func canMakePhoneCall() -> Bool {
+    public func canMakePhoneCall() -> Bool {
         return UIApplication.sharedApplication().canOpenURL(NSURL(fileURLWithPath:"tel://"))
     }
     
-    public static func networkAvailable() -> Bool {
+    public func networkAvailable() -> Bool {
         let status:Reachability.NetworkStatus = try! Reachability.reachabilityForInternetConnection().currentReachabilityStatus
         if status == Reachability.NetworkStatus.NotReachable {
             return false
@@ -184,7 +195,7 @@ public class SystemUtils {
         }
     }
     
-    public static func isAppCameraAccessAuthorized() -> Bool {
+    public func isAppCameraAccessAuthorized() -> Bool {
         if !self.isSystemVersionOver(7.0) {
             return true
         }
@@ -198,7 +209,7 @@ public class SystemUtils {
         }
     }
     
-    public static func isAppPhotoLibraryAccessAuthorized() -> Bool {
+    public func isAppPhotoLibraryAccessAuthorized() -> Bool {
         let authStatus: ALAuthorizationStatus = ALAssetsLibrary.authorizationStatus()
         if authStatus != ALAuthorizationStatus.Authorized {
             return authStatus == ALAuthorizationStatus.NotDetermined;
@@ -207,7 +218,7 @@ public class SystemUtils {
         }
     }
     
-    public static func getSelfViewFrameOrangeY() -> Double {
+    public func getSelfViewFrameOrangeY() -> Double {
         var orangeY: Double = 0.0
         let version: Float = Float(UIDevice.currentDevice().systemVersion)!
         
@@ -217,7 +228,7 @@ public class SystemUtils {
         return orangeY
     }
     
-    public static func isSystemVersionIs7() -> Bool {
+    public func isSystemVersionIs7() -> Bool {
         var result: Bool = false
         let version: Float = Float(UIDevice.currentDevice().systemVersion)!
         if version >= 7.0 && version < 7.1 {
@@ -226,3 +237,6 @@ public class SystemUtils {
         return result
     }
 }
+
+public let SharedSystemUtil: SystemUtil = SystemUtil.share();
+

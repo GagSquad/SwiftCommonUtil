@@ -10,7 +10,7 @@ import Foundation
 
 public class FileUtil {
     
-    public static func share() -> FileUtil {
+    static func share() -> FileUtil {
         struct Static {
             static var onceToken: dispatch_once_t = 0
             static var instance: FileUtil? = nil
@@ -144,4 +144,7 @@ public class FileUtil {
         }
     }
 }
+
+public let SharedFileUtil: FileUtil = FileUtil.share();
+
 

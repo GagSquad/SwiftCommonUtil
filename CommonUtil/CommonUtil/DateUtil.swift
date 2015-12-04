@@ -20,7 +20,7 @@ public class DateUtil {
     public let kNSDateHelperFormatSQLDate             = "yyyy-MM-dd";
     public let kNSDateHelperFormatSQLTime             = "HH:mm:ss";
     public let kNSDateHelperFormatSQLDateWithTime     = "yyyy-MM-dd HH:mm:ss";
-    class var sharedInstance: DateUtil {
+    class func share() -> DateUtil {
         struct Static {
             static var onceToken: dispatch_once_t = 0
             static var instance: DateUtil? = nil
@@ -327,4 +327,4 @@ public class DateUtil {
     
 }
 
-public let SharedDateUtil: DateUtil = DateUtil.sharedInstance;
+public let SharedDateUtil: DateUtil = DateUtil.share();

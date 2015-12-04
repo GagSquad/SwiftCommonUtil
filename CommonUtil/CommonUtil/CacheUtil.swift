@@ -12,7 +12,7 @@ public class  CacheUtil {
     
     var cache: NSCache = NSCache();
     
-    public static func share() -> CacheUtil {
+    class func share() -> CacheUtil {
         struct Static {
             static var onceToken: dispatch_once_t = 0
             static var instance: CacheUtil? = nil
@@ -44,3 +44,6 @@ public class  CacheUtil {
     }
     
 }
+
+public let SharedCacheUtil: CacheUtil = CacheUtil.share();
+

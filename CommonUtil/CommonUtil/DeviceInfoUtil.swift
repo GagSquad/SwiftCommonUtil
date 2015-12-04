@@ -17,8 +17,15 @@ public class DeviceInfoUtil {
     let kCUCFKeychainUDIDItemIdentifier = "UDID";
     let kCUCFKeychainUDIDAccount = "com.deviceInfo";
     public let kCUDefaultKeychainAccessGroup = "WEPZ293VNV.com.wanmei";
-    public init () {
-        
+    class func share() -> DeviceInfoUtil {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: DeviceInfoUtil? = nil
+        }
+        dispatch_once(&Static.onceToken) {
+            Static.instance = DeviceInfoUtil()
+        }
+        return Static.instance!
     }
     public func getUDIDWithKeyChainUDIDAccessGroup(accessGroup: String) throws -> String {
         if accessGroup.isEmpty {
@@ -37,3 +44,5 @@ public class DeviceInfoUtil {
         
     }
 }
+
+public let SharedDeviceInfoUtil: DeviceInfoUtil = DeviceInfoUtil.share();

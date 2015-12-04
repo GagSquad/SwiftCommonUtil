@@ -66,13 +66,13 @@
 		0E4153531BF4C54B00998354 /* CommonUtil */ = {
 			isa = PBXGroup;
 			children = (
+				0E4153541BF4C54B00998354 /* CommonUtil.h */,
 				0E56E01B1C1187360009316F /* StandDefaultUtil.swift */,
 				0E56E01D1C1187B60009316F /* CacheUtil.swift */,
 				0E41535E1BF4C5D000998354 /* DateUtil.swift */,
 				0E41535F1BF4C5D000998354 /* DeviceInfoUtil.swift */,
 				0E4153601BF4C5D000998354 /* KeychainUtil.swift */,
 				0E4153611BF4C5D000998354 /* SystemUitil.swift */,
-				0E4153541BF4C54B00998354 /* CommonUtil.h */,
 				0E56E0241C1197590009316F /* ArchieveUtil.swift */,
 				0E032D4C1BF6CB06009E4306 /* FileUtil.swift */,
 				0E032D4F1BF771E7009E4306 /* QuickUIUtil.swift */,
