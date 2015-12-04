@@ -14,6 +14,9 @@
 		0E4153631BF4C5D000998354 /* DeviceInfoUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E41535F1BF4C5D000998354 /* DeviceInfoUtil.swift */; };
 		0E4153641BF4C5D000998354 /* KeychainUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4153601BF4C5D000998354 /* KeychainUtil.swift */; };
 		0E4153651BF4C5D000998354 /* SystemUitil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4153611BF4C5D000998354 /* SystemUitil.swift */; };
+		0E56E01C1C1187360009316F /* StandDefaultUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56E01B1C1187360009316F /* StandDefaultUtil.swift */; };
+		0E56E01E1C1187B60009316F /* CacheUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56E01D1C1187B60009316F /* CacheUtil.swift */; };
+		0E56E0251C1197590009316F /* ArchieveUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56E0241C1197590009316F /* ArchieveUtil.swift */; };
 		0E6AB12D1C0321A7006C6755 /* StringUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6AB12C1C0321A7006C6755 /* StringUtil.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		0E41535F1BF4C5D000998354 /* DeviceInfoUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfoUtil.swift; sourceTree = "<group>"; };
 		0E4153601BF4C5D000998354 /* KeychainUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainUtil.swift; sourceTree = "<group>"; };
 		0E4153611BF4C5D000998354 /* SystemUitil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemUitil.swift; sourceTree = "<group>"; };
+		0E56E01B1C1187360009316F /* StandDefaultUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandDefaultUtil.swift; sourceTree = "<group>"; };
+		0E56E01D1C1187B60009316F /* CacheUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheUtil.swift; sourceTree = "<group>"; };
+		0E56E0241C1197590009316F /* ArchieveUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchieveUtil.swift; sourceTree = "<group>"; };
 		0E6AB12C1C0321A7006C6755 /* StringUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,11 +66,14 @@
 		0E4153531BF4C54B00998354 /* CommonUtil */ = {
 			isa = PBXGroup;
 			children = (
+				0E56E01B1C1187360009316F /* StandDefaultUtil.swift */,
+				0E56E01D1C1187B60009316F /* CacheUtil.swift */,
 				0E41535E1BF4C5D000998354 /* DateUtil.swift */,
 				0E41535F1BF4C5D000998354 /* DeviceInfoUtil.swift */,
 				0E4153601BF4C5D000998354 /* KeychainUtil.swift */,
 				0E4153611BF4C5D000998354 /* SystemUitil.swift */,
 				0E4153541BF4C54B00998354 /* CommonUtil.h */,
+				0E56E0241C1197590009316F /* ArchieveUtil.swift */,
 				0E032D4C1BF6CB06009E4306 /* FileUtil.swift */,
 				0E032D4F1BF771E7009E4306 /* QuickUIUtil.swift */,
 				0E6AB12C1C0321A7006C6755 /* StringUtil.swift */,
@@ -151,13 +160,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E56E0251C1197590009316F /* ArchieveUtil.swift in Sources */,
 				0E4153651BF4C5D000998354 /* SystemUitil.swift in Sources */,
 				0E4153621BF4C5D000998354 /* DateUtil.swift in Sources */,
 				0E6AB12D1C0321A7006C6755 /* StringUtil.swift in Sources */,
 				0E4153631BF4C5D000998354 /* DeviceInfoUtil.swift in Sources */,
 				0E032D501BF771E7009E4306 /* QuickUIUtil.swift in Sources */,
 				0E4153641BF4C5D000998354 /* KeychainUtil.swift in Sources */,
+				0E56E01C1C1187360009316F /* StandDefaultUtil.swift in Sources */,
 				0E032D4D1BF6CB06009E4306 /* FileUtil.swift in Sources */,
+				0E56E01E1C1187B60009316F /* CacheUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

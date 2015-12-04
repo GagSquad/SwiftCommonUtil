@@ -1,0 +1,31 @@
+//
+//  ArchieveUtil.swift
+//  CommonUtil
+//
+//  Created by lijunjie on 15/12/4.
+//  Copyright © 2015年 lijunjie. All rights reserved.
+//
+
+import Foundation
+
+public class ArchieveUtil {
+    public static func share() -> CacheUtil {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0
+            static var instance: CacheUtil? = nil
+        }
+        dispatch_once(&Static.onceToken) {
+            Static.instance = CacheUtil()
+        }
+        return Static.instance!
+    }
+
+    public func archieveObject(anObject: NSCoding, toPath: String) -> Bool {
+        let archieveData = NSKeyedArchiver.archivedDataWithRootObject(anObject);
+        return FileUtil.share().writeFileData(archieveData, toPath: toPath);
+    }
+    
+    public func unarchieveFromPath(filePath: String) -> AnyObject? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(filePath);
+    }
+}
