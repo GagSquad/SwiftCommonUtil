@@ -102,6 +102,14 @@ public class SystemUtil {
         return UIScreen.mainScreen().bounds.size
     }
     
+    public func deviceScreenWidth() -> CGFloat {
+        return UIScreen.mainScreen().bounds.size.width
+    }
+    
+    public func deviceScreenHeight() -> CGFloat {
+        return UIScreen.mainScreen().bounds.size.height
+    }
+    
     public func naivationBarHeight() -> CGFloat {
         return CGFloat(44.0)
     }
