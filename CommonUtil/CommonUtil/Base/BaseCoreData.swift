@@ -12,7 +12,7 @@ import CoreData
 public class BaseCoreData {
     
     private var PSC: NSPersistentStoreCoordinator?;
-    var persistentStoreCoordinator: NSPersistentStoreCoordinator? {
+    private var persistentStoreCoordinator: NSPersistentStoreCoordinator? {
         get {
             if managedObjectModel == nil {
                 return nil;
@@ -47,7 +47,7 @@ public class BaseCoreData {
     }
     
     private var MOM: NSManagedObjectModel?;
-    public var managedObjectModel: NSManagedObjectModel? {
+    private var managedObjectModel: NSManagedObjectModel? {
         get {
             if modelFileName.isEmpty {
                 return nil;
@@ -71,12 +71,12 @@ public class BaseCoreData {
             MOM = newValue;
         }
     }
-    var managedObjectContext: NSManagedObjectContext?;
-    var persistentStore: NSPersistentStore?;
-    var modelFileName: String = "";
-    var savePath: String = "";
-    var saveName: String = "";
-    var storeType: String = "";
+    public var managedObjectContext: NSManagedObjectContext?;
+    private var persistentStore: NSPersistentStore?;
+    private var modelFileName: String = "";
+    private var savePath: String = "";
+    private var saveName: String = "";
+    private var storeType: String = "";
     
     public init(modelFileName: String, savePath: String, saveName: String, storeType: String) {
         self.modelFileName = modelFileName;
