@@ -11,7 +11,7 @@ import CoreData
 
 public class BaseCoreData {
     
-    var PSC: NSPersistentStoreCoordinator?;
+    private var PSC: NSPersistentStoreCoordinator?;
     var persistentStoreCoordinator: NSPersistentStoreCoordinator? {
         get {
             if managedObjectModel == nil {
@@ -46,8 +46,8 @@ public class BaseCoreData {
         }
     }
     
-    var MOM: NSManagedObjectModel?;
-    var managedObjectModel: NSManagedObjectModel? {
+    private var MOM: NSManagedObjectModel?;
+    public var managedObjectModel: NSManagedObjectModel? {
         get {
             if modelFileName.isEmpty {
                 return nil;

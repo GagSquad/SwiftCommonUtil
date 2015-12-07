@@ -82,8 +82,8 @@
 				0E032D4F1BF771E7009E4306 /* QuickUIUtil.swift */,
 				0EB764311C13C31000C348F5 /* ImageUtil.swift */,
 				0E6AB12C1C0321A7006C6755 /* StringUtil.swift */,
-				0E4153561BF4C54B00998354 /* Info.plist */,
 				0E375D791C152D7B00DDA6B9 /* BaseCoreData.swift */,
+				0E4153561BF4C54B00998354 /* Info.plist */,
 			);
 			path = CommonUtil;
 			sourceTree = "<group>";
