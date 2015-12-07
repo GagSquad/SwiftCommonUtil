@@ -153,7 +153,7 @@ public class BaseCoreData {
         });
     }
     
-    public func saveContext(savedMoc:NSManagedObjectContext) -> Bool {
+    private func saveContext(savedMoc:NSManagedObjectContext) -> Bool {
         var contextToSave:NSManagedObjectContext? = savedMoc;
         while (contextToSave != nil) {
             var success = false;
