@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E032D4D1BF6CB06009E4306 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E032D4C1BF6CB06009E4306 /* FileUtil.swift */; };
 		0E032D501BF771E7009E4306 /* QuickUIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E032D4F1BF771E7009E4306 /* QuickUIUtil.swift */; };
+		0E375D7A1C152D7B00DDA6B9 /* BaseCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E375D791C152D7B00DDA6B9 /* BaseCoreData.swift */; };
 		0E4153551BF4C54B00998354 /* CommonUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E4153541BF4C54B00998354 /* CommonUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0E4153621BF4C5D000998354 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E41535E1BF4C5D000998354 /* DateUtil.swift */; };
 		0E4153631BF4C5D000998354 /* DeviceInfoUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E41535F1BF4C5D000998354 /* DeviceInfoUtil.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		0E032D4C1BF6CB06009E4306 /* FileUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
 		0E032D4F1BF771E7009E4306 /* QuickUIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickUIUtil.swift; sourceTree = "<group>"; };
+		0E375D791C152D7B00DDA6B9 /* BaseCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseCoreData.swift; path = Base/BaseCoreData.swift; sourceTree = "<group>"; };
 		0E4153511BF4C54B00998354 /* CommonUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E4153541BF4C54B00998354 /* CommonUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
 		0E4153561BF4C54B00998354 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				0EB764311C13C31000C348F5 /* ImageUtil.swift */,
 				0E6AB12C1C0321A7006C6755 /* StringUtil.swift */,
 				0E4153561BF4C54B00998354 /* Info.plist */,
+				0E375D791C152D7B00DDA6B9 /* BaseCoreData.swift */,
 			);
 			path = CommonUtil;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				0E56E0251C1197590009316F /* ArchieveUtil.swift in Sources */,
 				0E4153651BF4C5D000998354 /* SystemUitil.swift in Sources */,
 				0E4153621BF4C5D000998354 /* DateUtil.swift in Sources */,
+				0E375D7A1C152D7B00DDA6B9 /* BaseCoreData.swift in Sources */,
 				0E6AB12D1C0321A7006C6755 /* StringUtil.swift in Sources */,
 				0E4153631BF4C5D000998354 /* DeviceInfoUtil.swift in Sources */,
 				0E032D501BF771E7009E4306 /* QuickUIUtil.swift in Sources */,
