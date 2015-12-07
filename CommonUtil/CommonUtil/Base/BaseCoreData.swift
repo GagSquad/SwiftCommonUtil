@@ -10,23 +10,25 @@ import Foundation
 import CoreData
 
 public class BaseCoreData {
+    
+    var PSC: NSPersistentStoreCoordinator?;
     var persistentStoreCoordinator: NSPersistentStoreCoordinator? {
         get {
-            if managedObjectModel != nil {
+            if managedObjectModel == nil {
                 return nil;
             }
             
-            if self.persistentStoreCoordinator != nil {
-                return self.persistentStoreCoordinator;
+            if PSC != nil {
+                return PSC;
             }
-
+            
             let databasePath = self.getPath();
             let storeURL = NSURL.fileURLWithPath(databasePath);
             
-            self.persistentStoreCoordinator = NSPersistentStoreCoordinator.init(managedObjectModel:managedObjectModel!);
+            PSC = NSPersistentStoreCoordinator.init(managedObjectModel:managedObjectModel!);
             
             do {
-                try persistentStore = self.persistentStoreCoordinator?.addPersistentStoreWithType(storeType, configuration: nil, URL: storeURL, options: nil);
+                try persistentStore = PSC?.addPersistentStoreWithType(storeType, configuration: nil, URL: storeURL, options: nil);
             } catch {
                 print("Unresolved error");
                 abort();
@@ -36,20 +38,23 @@ public class BaseCoreData {
                 print("Unresolved error");
                 abort();
             }
-            return self.persistentStoreCoordinator;
+            
+            return PSC;
         }
         set {
             self.persistentStoreCoordinator = newValue;
         }
     }
+    
+    var MOM: NSManagedObjectModel?;
     var managedObjectModel: NSManagedObjectModel? {
         get {
             if modelFileName.isEmpty {
                 return nil;
             }
             
-            if self.managedObjectModel != nil {
-                return self.managedObjectModel;
+            if MOM != nil {
+                return MOM;
             }
             
             let rag = modelFileName.rangeOfString(".momd");
@@ -59,10 +64,11 @@ public class BaseCoreData {
                 copymodFileName = modelFileName.substringToIndex(r.endIndex);
             }
             let modelURL = NSBundle.mainBundle().URLForResource(copymodFileName, withExtension: "momd");
-            return NSManagedObjectModel(contentsOfURL: modelURL!);
+            MOM = NSManagedObjectModel(contentsOfURL: modelURL!)
+            return MOM;
         }
         set {
-            self.managedObjectModel = newValue;
+            MOM = newValue;
         }
     }
     var managedObjectContext: NSManagedObjectContext?;
@@ -88,15 +94,15 @@ public class BaseCoreData {
     }
     
     public func initManagedObjectContext() {
-        if managedObjectModel != nil {
+        if managedObjectModel == nil {
             return;
         }
         
-        if persistentStoreCoordinator != nil {
+        if persistentStoreCoordinator == nil {
             return;
         }
         
-        if managedObjectContext != nil {
+        if managedObjectContext == nil {
             managedObjectContext = NSManagedObjectContext.init(concurrencyType: .PrivateQueueConcurrencyType);
             managedObjectContext?.persistentStoreCoordinator = persistentStoreCoordinator;
             managedObjectContext?.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
@@ -128,7 +134,7 @@ public class BaseCoreData {
             dispatch_async(dispatch_get_main_queue(), complete);
         });
     }
-
+    
     public func safelySaveContextMOC() {
         self.managedObjectContext?.performBlockAndWait({ () -> Void in
             self.saveContextMOC();
