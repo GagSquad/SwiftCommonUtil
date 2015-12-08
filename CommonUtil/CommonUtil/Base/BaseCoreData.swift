@@ -11,177 +11,177 @@ import CoreData
 
 public class BaseCoreData {
     
-    private var PSC: NSPersistentStoreCoordinator?;
+    private var PSC: NSPersistentStoreCoordinator?
     private var persistentStoreCoordinator: NSPersistentStoreCoordinator? {
         get {
             if managedObjectModel == nil {
-                return nil;
+                return nil
             }
             
             if PSC != nil {
-                return PSC;
+                return PSC
             }
             
-            let databasePath = self.getPath();
-            let storeURL = NSURL.fileURLWithPath(databasePath);
+            let databasePath = self.getPath()
+            let storeURL = NSURL.fileURLWithPath(databasePath)
             
-            PSC = NSPersistentStoreCoordinator.init(managedObjectModel:managedObjectModel!);
+            PSC = NSPersistentStoreCoordinator.init(managedObjectModel:managedObjectModel!)
             
             do {
-                try persistentStore = PSC?.addPersistentStoreWithType(storeType, configuration: nil, URL: storeURL, options: nil);
+                try persistentStore = PSC?.addPersistentStoreWithType(storeType, configuration: nil, URL: storeURL, options: nil)
             } catch {
-                print("Unresolved error");
-                abort();
+                print("Unresolved error")
+                abort()
             }
             
             if persistentStore == nil {
-                print("Unresolved error");
-                abort();
+                print("Unresolved error")
+                abort()
             }
             
-            return PSC;
+            return PSC
         }
         set {
-            self.persistentStoreCoordinator = newValue;
+            self.persistentStoreCoordinator = newValue
         }
     }
     
-    private var MOM: NSManagedObjectModel?;
+    private var MOM: NSManagedObjectModel?
     private var managedObjectModel: NSManagedObjectModel? {
         get {
             if modelFileName.isEmpty {
-                return nil;
+                return nil
             }
             
             if MOM != nil {
-                return MOM;
+                return MOM
             }
             
-            let rag = modelFileName.rangeOfString(".momd");
-            var copymodFileName = modelFileName;
+            let rag = modelFileName.rangeOfString(".momd")
+            var copymodFileName = modelFileName
             
             if  let r =  rag {
-                copymodFileName = modelFileName.substringToIndex(r.endIndex);
+                copymodFileName = modelFileName.substringToIndex(r.endIndex)
             }
-            let modelURL = NSBundle.mainBundle().URLForResource(copymodFileName, withExtension: "momd");
+            let modelURL = NSBundle.mainBundle().URLForResource(copymodFileName, withExtension: "momd")
             MOM = NSManagedObjectModel(contentsOfURL: modelURL!)
-            return MOM;
+            return MOM
         }
         set {
-            MOM = newValue;
+            MOM = newValue
         }
     }
-    public var managedObjectContext: NSManagedObjectContext?;
-    private var persistentStore: NSPersistentStore?;
-    private var modelFileName: String = "";
-    private var savePath: String = "";
-    private var saveName: String = "";
-    private var storeType: String = "";
+    public var managedObjectContext: NSManagedObjectContext?
+    private var persistentStore: NSPersistentStore?
+    private var modelFileName: String = ""
+    private var savePath: String = ""
+    private var saveName: String = ""
+    private var storeType: String = ""
     
     public init(modelFileName: String, savePath: String, saveName: String, storeType: String) {
-        self.modelFileName = modelFileName;
-        self.saveName = saveName;
-        self.savePath = savePath;
-        self.storeType = storeType;
-        self.initManagedObjectContext();
+        self.modelFileName = modelFileName
+        self.saveName = saveName
+        self.savePath = savePath
+        self.storeType = storeType
+        self.initManagedObjectContext()
     }
     
     public func cleanUp() {
-        persistentStoreCoordinator = nil;
-        managedObjectModel = nil;
-        managedObjectContext = nil;
-        persistentStore = nil;
+        persistentStoreCoordinator = nil
+        managedObjectModel = nil
+        managedObjectContext = nil
+        persistentStore = nil
     }
     
     public func initManagedObjectContext() {
         if managedObjectModel == nil {
-            return;
+            return
         }
         
         if persistentStoreCoordinator == nil {
-            return;
+            return
         }
         
         if managedObjectContext == nil {
-            managedObjectContext = NSManagedObjectContext.init(concurrencyType: .PrivateQueueConcurrencyType);
-            managedObjectContext?.persistentStoreCoordinator = persistentStoreCoordinator;
-            managedObjectContext?.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
+            managedObjectContext = NSManagedObjectContext.init(concurrencyType: .PrivateQueueConcurrencyType)
+            managedObjectContext?.persistentStoreCoordinator = persistentStoreCoordinator
+            managedObjectContext?.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         }
     }
     
     private func getPath() -> String {
-        let fileMgr: NSFileManager = NSFileManager.defaultManager();
+        let fileMgr: NSFileManager = NSFileManager.defaultManager()
         
         if !fileMgr.fileExistsAtPath(savePath) {
             do {
-                try fileMgr.createDirectoryAtPath(savePath, withIntermediateDirectories: true, attributes: nil);
+                try fileMgr.createDirectoryAtPath(savePath, withIntermediateDirectories: true, attributes: nil)
             } catch {
-                print("创建文件失败！");
+                print("创建文件失败！")
             }
         }
-        return (savePath as NSString).stringByAppendingPathComponent(saveName);
+        return (savePath as NSString).stringByAppendingPathComponent(saveName)
     }
     
     public func performBlock(block: () -> Void) {
-        let moc = managedObjectContext;
-        moc?.performBlock(block);
+        let moc = managedObjectContext
+        moc?.performBlock(block)
     }
     
     public func performBlock(block: (moc: NSManagedObjectContext) -> Void, complete: () -> Void) {
-        let moc = managedObjectContext;
+        let moc = managedObjectContext
         moc?.performBlock({ () -> Void in
-            block(moc: moc!);
-            dispatch_async(dispatch_get_main_queue(), complete);
-        });
+            block(moc: moc!)
+            dispatch_async(dispatch_get_main_queue(), complete)
+        })
     }
     
     public func safelySaveContextMOC() {
         self.managedObjectContext?.performBlockAndWait({ () -> Void in
-            self.saveContextMOC();
-        });
+            self.saveContextMOC()
+        })
     }
     
     public func unsafelySaveContextMOC() {
         self.managedObjectContext?.performBlock({ () -> Void in
-            self.saveContextMOC();
-        });
+            self.saveContextMOC()
+        })
     }
     
     private func saveContextMOC() {
-        self.saveContext(self.managedObjectContext!);
+        self.saveContext(self.managedObjectContext!)
     }
     
     private func saveContext(savedMoc:NSManagedObjectContext) -> Bool {
-        var contextToSave:NSManagedObjectContext? = savedMoc;
+        var contextToSave:NSManagedObjectContext? = savedMoc
         while (contextToSave != nil) {
-            var success = false;
+            var success = false
             do {
-                let s: NSSet = (contextToSave?.insertedObjects)! as NSSet;
-                try contextToSave?.obtainPermanentIDsForObjects(s.allObjects as! [NSManagedObject]);
+                let s: NSSet = (contextToSave?.insertedObjects)! as NSSet
+                try contextToSave?.obtainPermanentIDsForObjects(s.allObjects as! [NSManagedObject])
             } catch {
-                print("保存失败！！！");
-                return false;
+                print("保存失败！！！")
+                return false
             }
             if contextToSave?.hasChanges == true {
                 do {
-                    try contextToSave?.save();
-                    success = true;
+                    try contextToSave?.save()
+                    success = true
                 } catch {
-                    print("Saving of managed object context failed");
-                    success = false;
+                    print("Saving of managed object context failed")
+                    success = false
                 }
             } else {
-                success = true;
+                success = true
             }
             if success == false {
-                return false;
+                return false
             }
             if contextToSave!.parentContext == nil && contextToSave!.persistentStoreCoordinator == nil {
-                print("Reached the end of the chain of nested managed object contexts without encountering a persistent store coordinator. Objects are not fully persisted.");
-                return false;
+                print("Reached the end of the chain of nested managed object contexts without encountering a persistent store coordinator. Objects are not fully persisted.")
+                return false
             }
-            contextToSave = contextToSave?.parentContext;
+            contextToSave = contextToSave?.parentContext
         }
-        return true;
+        return true
     }
 }

@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(try! SharedDeviceInfoUtil.getUDIDWithKeyChainUDIDAccessGroup(SharedDeviceInfoUtil.kCUDefaultKeychainAccessGroup));
+        print(try! SharedDeviceInfoUtil.getUDIDWithKeyChainUDIDAccessGroup(SharedDeviceInfoUtil.kCUDefaultKeychainAccessGroup))
         // Do any additional setup after loading the view, typically from a nib.
     }
 

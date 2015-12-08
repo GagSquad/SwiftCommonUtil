@@ -10,25 +10,25 @@ import UIKit
 
 public class ImageUtil {
     
-    private static let share = ImageUtil();
+    private static let share = ImageUtil()
     
     private init () {}
     
     public func imageForColor(color: UIColor, size: CGSize) -> UIImage {
-        let rect = CGRectMake(0, 0, size.width, size.height);
-        UIGraphicsBeginImageContext(rect.size);
-        let context = UIGraphicsGetCurrentContext();
+        let rect = CGRectMake(0, 0, size.width, size.height)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
         
-        CGContextSetFillColorWithColor(context, color.CGColor);
+        CGContextSetFillColorWithColor(context, color.CGColor)
         
-        CGContextFillRect(context, rect);
+        CGContextFillRect(context, rect)
         
-        let img = UIGraphicsGetImageFromCurrentImageContext();
+        let img = UIGraphicsGetImageFromCurrentImageContext()
         
-        UIGraphicsEndImageContext();
+        UIGraphicsEndImageContext()
         
-        return img;
+        return img
     }
 }
 
-public let SharedImageUtil: ImageUtil = ImageUtil.share;
+public let SharedImageUtil: ImageUtil = ImageUtil.share

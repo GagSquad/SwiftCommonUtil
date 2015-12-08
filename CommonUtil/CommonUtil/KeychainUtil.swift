@@ -17,15 +17,15 @@ public enum CommonUtilError: ErrorType {
 
 public class KeychainUtil {
     
-    private static let share = KeychainUtil();
+    private static let share = KeychainUtil()
     
     private init () {}
     
     public func getBaseKeychainQueryWithAccount(account: String, service: String, accessGroup: String) -> [NSString : AnyObject] {
-        var res = [NSString : AnyObject]();
-        res[kSecClass] = kSecClassGenericPassword;
-        res[kSecAttrAccount] = account;
-        res[kSecAttrService] = service;
+        var res = [NSString : AnyObject]()
+        res[kSecClass] = kSecClassGenericPassword
+        res[kSecAttrAccount] = account
+        res[kSecAttrService] = service
         
         if !accessGroup.isEmpty {
             #if TARGET_IPHONE_SIMULATOR
@@ -36,70 +36,70 @@ public class KeychainUtil {
                 如果SecItem包含accessGroup,当SecItemAdd and SecItemUpdate时，将返回-25243 (errSecNoAccessForItem)
                 */
             #else
-                res[kSecAttrAccessGroup] = accessGroup;
+                res[kSecAttrAccessGroup] = accessGroup
             #endif
         }
-        return res;
+        return res
     }
     
     public func getDataWithAccount(account: String, service: String, accessGroup: String) -> NSData? {
-        var res: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup);
-        res[kSecMatchCaseInsensitive] = kCFBooleanTrue;
-        res[kSecMatchLimit] = kSecMatchLimitOne;
-        res[kSecReturnData] = kCFBooleanTrue;
-        var queryErr: OSStatus = noErr;
-        var udidValue: NSData?;
+        var res: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup)
+        res[kSecMatchCaseInsensitive] = kCFBooleanTrue
+        res[kSecMatchLimit] = kSecMatchLimitOne
+        res[kSecReturnData] = kCFBooleanTrue
+        var queryErr: OSStatus = noErr
+        var udidValue: NSData?
         var inTypeRef : AnyObject?
         
-        queryErr = SecItemCopyMatching(res, &inTypeRef);
-        udidValue = inTypeRef as? NSData;
+        queryErr = SecItemCopyMatching(res, &inTypeRef)
+        udidValue = inTypeRef as? NSData
         if (queryErr != errSecSuccess) {
-            return nil;
+            return nil
         }
-        return udidValue;
+        return udidValue
     }
     
     public func saveData(data: NSData, account: String, service:String, accessGroup: String) throws {
-        var query : [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup);
-        query[kSecAttrLabel] = "";
-        query[kSecValueData] = data;
-        var writeErr: OSStatus = noErr;
-        writeErr = SecItemAdd(query, nil);
+        var query : [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup)
+        query[kSecAttrLabel] = ""
+        query[kSecValueData] = data
+        var writeErr: OSStatus = noErr
+        writeErr = SecItemAdd(query, nil)
         if writeErr != errSecSuccess {
-            throw CommonUtilError.KeychainSaveError;
+            throw CommonUtilError.KeychainSaveError
         }
     }
     
     public func deleteDataWithAccount(account: String, service: String, accessGroup: String) throws {
-        let dictForDelete: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup);
-        var deleteErr: OSStatus = noErr;
+        let dictForDelete: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup)
+        var deleteErr: OSStatus = noErr
         
-        deleteErr = SecItemDelete(dictForDelete);
+        deleteErr = SecItemDelete(dictForDelete)
         
         if(deleteErr != errSecSuccess){
-            throw CommonUtilError.KeychainDeleteError;
+            throw CommonUtilError.KeychainDeleteError
         }
     }
     
     public func updateData(data: NSData, account:String, service:String, accessGroup:String) throws {
-        var dictForQuery: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup);
-        dictForQuery[kSecMatchCaseInsensitive] = kCFBooleanTrue;
-        dictForQuery[kSecMatchLimit] = kSecMatchLimitOne;
-        dictForQuery[kSecReturnData] = kCFBooleanTrue;
-        dictForQuery[kSecReturnAttributes] = kCFBooleanTrue;
-        var queryResultRef: AnyObject?;
-        SecItemCopyMatching(dictForQuery, &queryResultRef);
+        var dictForQuery: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup)
+        dictForQuery[kSecMatchCaseInsensitive] = kCFBooleanTrue
+        dictForQuery[kSecMatchLimit] = kSecMatchLimitOne
+        dictForQuery[kSecReturnData] = kCFBooleanTrue
+        dictForQuery[kSecReturnAttributes] = kCFBooleanTrue
+        var queryResultRef: AnyObject?
+        SecItemCopyMatching(dictForQuery, &queryResultRef)
         if queryResultRef != nil {
             var dictForUpdate: [NSString : AnyObject] = self.getBaseKeychainQueryWithAccount(account, service: service, accessGroup: accessGroup)
-            dictForUpdate[kSecValueData] = data;
-            var updateErr: OSStatus = noErr;
-            updateErr = SecItemUpdate(dictForQuery, dictForUpdate);
+            dictForUpdate[kSecValueData] = data
+            var updateErr: OSStatus = noErr
+            updateErr = SecItemUpdate(dictForQuery, dictForUpdate)
             if (updateErr != errSecSuccess) {
-                print("Update KeyChain Item Error!!! Error Code:%ld", updateErr);
-                throw CommonUtilError.KeychainUpdateError;
+                print("Update KeyChain Item Error!!! Error Code:%ld", updateErr)
+                throw CommonUtilError.KeychainUpdateError
             }
         }
     }
 }
 
-public let SharedKeychanUtil: KeychainUtil = KeychainUtil.share;
+public let SharedKeychanUtil: KeychainUtil = KeychainUtil.share

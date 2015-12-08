@@ -13,7 +13,7 @@ import ReachabilitySwift
 
 public class SystemUtil {
     
-    private static let share = SystemUtil();
+    private static let share = SystemUtil()
     
     private init () {}
     
@@ -35,7 +35,7 @@ public class SystemUtil {
     
     public func appBundleStringVersion() -> String {
         let infoDict = NSBundle.mainBundle().infoDictionary
-        return infoDict!["CFBundleVersion"] as! String;
+        return infoDict!["CFBundleVersion"] as! String
     }
     
     public func appBundleIntVersion() -> Int {
@@ -143,27 +143,27 @@ public class SystemUtil {
 //    + (void)originObject:(id)originObject associateObject:(id)anObject byKey:(NSString *const)associateKey
 //    {
 //    if (CUCFCheckObjectNull(originObject) || CUCFCheckObjectNull(anObject)) {
-//    return;
+//    return
 //    }
 //    
-//    objc_setAssociatedObject(originObject, &associateKey, anObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    objc_setAssociatedObject(originObject, &associateKey, anObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 //    }
 //    
 //    + (id)associateObjectFromOrigin:(id)originObject byKey:(NSString *const)associateKey
 //    {
 //    if (CUCFCheckObjectNull(originObject) || CUCFStringIsNull(associateKey)) {
-//    return nil;
+//    return nil
 //    }
-//    id associateObj = objc_getAssociatedObject(originObject, &associateKey);
-//    return associateObj;
+//    id associateObj = objc_getAssociatedObject(originObject, &associateKey)
+//    return associateObj
 //    }
 //    
 //    + (void)associateRemoveFromOrigin:(id)originObject
 //    {
 //    if (CUCFCheckObjectNull(originObject)) {
-//    return;
+//    return
 //    }
-//    objc_removeAssociatedObjects(originObject);
+//    objc_removeAssociatedObjects(originObject)
 //    }
 //   
     
@@ -200,22 +200,22 @@ public class SystemUtil {
         if !self.isSystemVersionOver(7.0) {
             return true
         }
-        let mediaType: String = AVMediaTypeVideo;
+        let mediaType: String = AVMediaTypeVideo
         
         let authStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatusForMediaType(mediaType)
         if authStatus !=  AVAuthorizationStatus.Authorized {
-            return authStatus == AVAuthorizationStatus.NotDetermined;
+            return authStatus == AVAuthorizationStatus.NotDetermined
         } else {
-            return true;
+            return true
         }
     }
     
     public func isAppPhotoLibraryAccessAuthorized() -> Bool {
         let authStatus: ALAuthorizationStatus = ALAssetsLibrary.authorizationStatus()
         if authStatus != ALAuthorizationStatus.Authorized {
-            return authStatus == ALAuthorizationStatus.NotDetermined;
+            return authStatus == ALAuthorizationStatus.NotDetermined
         }else{
-            return true;
+            return true
         }
     }
     
@@ -239,5 +239,5 @@ public class SystemUtil {
     }
 }
 
-public let SharedSystemUtil: SystemUtil = SystemUtil.share;
+public let SharedSystemUtil: SystemUtil = SystemUtil.share
 
