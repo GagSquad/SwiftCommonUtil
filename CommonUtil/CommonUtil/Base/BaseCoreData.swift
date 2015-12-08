@@ -147,7 +147,7 @@ public class BaseCoreData {
         });
     }
     
-    public func saveContextMOC() {
+    private func saveContextMOC() {
         self.saveContext(self.managedObjectContext!);
     }
     
