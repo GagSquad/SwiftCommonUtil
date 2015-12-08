@@ -16,7 +16,7 @@ public class ArchieveUtil {
 
     public func archieveObject(anObject: NSCoding, toPath: String) -> Bool {
         let archieveData = NSKeyedArchiver.archivedDataWithRootObject(anObject);
-        return FileUtil.share().writeFileData(archieveData, toPath: toPath);
+        return SharedFileUtil.writeFileData(archieveData, toPath: toPath);
     }
     
     public func unarchieveFromPath(filePath: String) -> AnyObject? {
