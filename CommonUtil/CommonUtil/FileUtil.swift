@@ -10,16 +10,9 @@ import Foundation
 
 public class FileUtil {
     
-    static func share() -> FileUtil {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: FileUtil? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = FileUtil()
-        }
-        return Static.instance!
-    }
+    private static let share = FileUtil();
+    
+    private init () {}
     
     public func createDirectory(path: String) {
         if NSFileManager.defaultManager().fileExistsAtPath(path, isDirectory: nil) {
@@ -145,6 +138,6 @@ public class FileUtil {
     }
 }
 
-public let SharedFileUtil: FileUtil = FileUtil.share();
+public let SharedFileUtil: FileUtil = FileUtil.share;
 
 

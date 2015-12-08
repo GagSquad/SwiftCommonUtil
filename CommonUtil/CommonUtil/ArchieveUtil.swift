@@ -9,16 +9,10 @@
 import Foundation
 
 public class ArchieveUtil {
-    class func share() -> ArchieveUtil {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: ArchieveUtil? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = ArchieveUtil()
-        }
-        return Static.instance!
-    }
+    
+    private static let share = ArchieveUtil();
+    
+    private init () {}
 
     public func archieveObject(anObject: NSCoding, toPath: String) -> Bool {
         let archieveData = NSKeyedArchiver.archivedDataWithRootObject(anObject);
@@ -30,4 +24,4 @@ public class ArchieveUtil {
     }
 }
 
-public let SharedArchieveUtil: ArchieveUtil = ArchieveUtil.share();
+public let SharedArchieveUtil: ArchieveUtil = ArchieveUtil.share;

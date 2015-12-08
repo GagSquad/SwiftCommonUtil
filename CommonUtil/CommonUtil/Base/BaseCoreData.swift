@@ -142,15 +142,13 @@ public class BaseCoreData {
     }
     
     public func unsafelySaveContextMOC() {
-        self.managedObjectContext?.performBlockAndWait({ () -> Void in
+        self.managedObjectContext?.performBlock({ () -> Void in
             self.saveContextMOC();
         });
     }
     
     public func saveContextMOC() {
-        self.managedObjectContext?.performBlock({ () -> Void in
-            self.saveContext(self.managedObjectContext!);
-        });
+        self.saveContext(self.managedObjectContext!);
     }
     
     private func saveContext(savedMoc:NSManagedObjectContext) -> Bool {

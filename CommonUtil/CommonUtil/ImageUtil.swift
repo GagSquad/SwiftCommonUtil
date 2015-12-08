@@ -10,16 +10,9 @@ import UIKit
 
 public class ImageUtil {
     
-    class func share() -> ImageUtil {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: ImageUtil? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = ImageUtil()
-        }
-        return Static.instance!
-    }
+    private static let share = ImageUtil();
+    
+    private init () {}
     
     public func imageForColor(color: UIColor, size: CGSize) -> UIImage {
         let rect = CGRectMake(0, 0, size.width, size.height);
@@ -38,4 +31,4 @@ public class ImageUtil {
     }
 }
 
-public let SharedImageUtil: ImageUtil = ImageUtil.share();
+public let SharedImageUtil: ImageUtil = ImageUtil.share;

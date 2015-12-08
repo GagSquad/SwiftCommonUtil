@@ -17,16 +17,9 @@ public enum CommonUtilError: ErrorType {
 
 public class KeychainUtil {
     
-    class func share() -> KeychainUtil {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: KeychainUtil? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = KeychainUtil()
-        }
-        return Static.instance!
-    }
+    private static let share = KeychainUtil();
+    
+    private init () {}
     
     public func getBaseKeychainQueryWithAccount(account: String, service: String, accessGroup: String) -> [NSString : AnyObject] {
         var res = [NSString : AnyObject]();
@@ -109,4 +102,4 @@ public class KeychainUtil {
     }
 }
 
-public let SharedKeychanUtil: KeychainUtil = KeychainUtil.share();
+public let SharedKeychanUtil: KeychainUtil = KeychainUtil.share;

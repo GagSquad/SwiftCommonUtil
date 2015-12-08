@@ -10,16 +10,9 @@ import Foundation
 
 public class StandDefaultUtil {
     
-    class func share() -> StandDefaultUtil {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: StandDefaultUtil? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = StandDefaultUtil()
-        }
-        return Static.instance!
-    }
+    private static let share = StandDefaultUtil();
+    
+    private init () {}
     
     public func standDefault() -> NSUserDefaults {
         return NSUserDefaults.standardUserDefaults();
@@ -43,4 +36,4 @@ public class StandDefaultUtil {
     
 }
 
-public let SharedStandDefaultUtil: StandDefaultUtil = StandDefaultUtil.share();
+public let SharedStandDefaultUtil: StandDefaultUtil = StandDefaultUtil.share;

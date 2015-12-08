@@ -20,16 +20,10 @@ public class DateUtil {
     public let kNSDateHelperFormatSQLDate             = "yyyy-MM-dd";
     public let kNSDateHelperFormatSQLTime             = "HH:mm:ss";
     public let kNSDateHelperFormatSQLDateWithTime     = "yyyy-MM-dd HH:mm:ss";
-    class func share() -> DateUtil {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: DateUtil? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = DateUtil()
-        }
-        return Static.instance!
-    }
+    
+    private static let share = DateUtil();
+    
+    private init () {}
     
     public func sharedCalendar() -> NSCalendar {
         let res = NSCalendar.currentCalendar();
@@ -327,4 +321,4 @@ public class DateUtil {
     
 }
 
-public let SharedDateUtil: DateUtil = DateUtil.share();
+public let SharedDateUtil: DateUtil = DateUtil.share;

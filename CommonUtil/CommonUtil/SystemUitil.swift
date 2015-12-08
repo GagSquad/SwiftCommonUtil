@@ -13,16 +13,9 @@ import ReachabilitySwift
 
 public class SystemUtil {
     
-    class func share() -> SystemUtil {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: SystemUtil? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = SystemUtil()
-        }
-        return Static.instance!
-    }
+    private static let share = SystemUtil();
+    
+    private init () {}
     
     /**
      获取App的版本号 Float 行
@@ -246,5 +239,5 @@ public class SystemUtil {
     }
 }
 
-public let SharedSystemUtil: SystemUtil = SystemUtil.share();
+public let SharedSystemUtil: SystemUtil = SystemUtil.share;
 

@@ -16,17 +16,11 @@ public enum DeviceInfoError: ErrorType {
 public class DeviceInfoUtil {
     let kCUCFKeychainUDIDItemIdentifier = "UDID";
     let kCUCFKeychainUDIDAccount = "com.deviceInfo";
-    public let kCUDefaultKeychainAccessGroup = "WEPZ293VNV.com.wanmei";
-    class func share() -> DeviceInfoUtil {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-            static var instance: DeviceInfoUtil? = nil
-        }
-        dispatch_once(&Static.onceToken) {
-            Static.instance = DeviceInfoUtil()
-        }
-        return Static.instance!
-    }
+    public let kCUDefaultKeychainAccessGroup = "WEPZ293VNV.com.itlijunjie";
+    
+    private static let share = DeviceInfoUtil();
+    
+    private init () {}
     public func getUDIDWithKeyChainUDIDAccessGroup(accessGroup: String) throws -> String {
         if accessGroup.isEmpty {
             throw DeviceInfoError.DeviceInfoKeychainError;
@@ -45,4 +39,4 @@ public class DeviceInfoUtil {
     }
 }
 
-public let SharedDeviceInfoUtil: DeviceInfoUtil = DeviceInfoUtil.share();
+public let SharedDeviceInfoUtil: DeviceInfoUtil = DeviceInfoUtil.share;
