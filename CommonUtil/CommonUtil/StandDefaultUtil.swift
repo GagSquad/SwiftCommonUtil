@@ -18,15 +18,15 @@ public class StandDefaultUtil {
         return NSUserDefaults.standardUserDefaults()
     }
     
-    public func userDefaultCache(value: NSCoding, key: AnyObject) {
-        self.userDefaultCache(value, key: key)
+    public func userDefaultCache(value: AnyObject?, key: String) {
+        self.standDefault().setObject(value, forKey: key)
     }
     
     public func userDefaultRemove(key: String) {
         self.standDefault().removeObjectForKey(key)
     }
     
-    public func userDefaultGetValue(key: String) -> AnyObject! {
+    public func userDefaultGetValue(key: String) -> AnyObject? {
         return self.standDefault().objectForKey(key)
     }
     
