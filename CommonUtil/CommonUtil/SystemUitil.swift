@@ -56,7 +56,8 @@ public class SystemUtil {
     }
     
     public func currentSystemFloatVersion() -> Float {
-        return Float(UIDevice.currentDevice().systemVersion)!
+        let systemVersion: String = UIDevice.currentDevice().systemVersion
+        return (systemVersion as NSString).floatValue
     }
     
     public func currentSystemStringVersion() -> String {
